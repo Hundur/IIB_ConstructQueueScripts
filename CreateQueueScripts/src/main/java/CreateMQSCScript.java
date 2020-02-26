@@ -14,8 +14,7 @@ public class CreateMQSCScript {
 
         // Search folders for msgflows and subflows
         FlowFinder flowFinder = new FlowFinder();
-
-        // "C:\\Users\\Jesper\\IBM\\IIBT10\\workspace\\tip023-ds-aps-gdm-java\\TIP023_APS_GDM"
+      
         List<String> flowsFound = flowFinder.findFlows(rootDir);
 
         // Search files for queues
