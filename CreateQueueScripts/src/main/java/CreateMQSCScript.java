@@ -6,11 +6,16 @@ public class CreateMQSCScript {
 
     public static void main(String[] args) {
 
+        String rootDir = args[0];
+        String targetDir = args[1];
+
+        //String rootDir = "C:\\Users\\Jesper\\IBM\\IIBT10\\workspace\\tip023-ds-aps-gdm-java\\TIP023_APS_GDM";
+        //String targetDir = "C:\\Users\\Jesper\\IdeaProjects\\IIB_ConstructQueueScripts\\CreateQueueScripts\\out";
+
         // Search folders for msgflows and subflows
         FlowFinder flowFinder = new FlowFinder();
 
-        String rootDir = "C:\\Users\\Jesper\\IBM\\IIBT10\\workspace\\tip023-ds-aps-gdm-java\\TIP023_APS_GDM";
-
+        // "C:\\Users\\Jesper\\IBM\\IIBT10\\workspace\\tip023-ds-aps-gdm-java\\TIP023_APS_GDM"
         List<String> flowsFound = flowFinder.findFlows(rootDir);
 
         // Search files for queues
@@ -40,7 +45,7 @@ public class CreateMQSCScript {
         }
         */
 
-        writeToFile.writeQueuesToMQSCCreateFile(noDupesQueues, projectName);
+        writeToFile.writeQueuesToMQSCCreateFile(noDupesQueues, targetDir, projectName);
 
         //writeToFile.writeQueuesToMQSCClearFile(noDupesQueues, projectName);
         //writeToFile.writeQueuesToMQSCDeleteFile(noDupesQueues, projectName);

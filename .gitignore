@@ -81,3 +81,4 @@ nb-configuration.xml
 ## MISC
 ##############################
 *.mqsc
+out/
