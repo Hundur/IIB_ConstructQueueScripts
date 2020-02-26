@@ -5,10 +5,10 @@ import java.util.List;
 
 public class WriteToFile {
 
-    public void writeQueuesToMQSCCreateFile(List<String> queues) {
+    public void writeQueuesToMQSCCreateFile(List<String> queues, String projectName) {
 
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("CreateQueues.mqsc"));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(projectName + ".mqsc"));
 
             for (String queue : queues) {
                 writer.write(String.format("DEFINE QLOCAL('%s') +\n", queue));
@@ -23,10 +23,10 @@ public class WriteToFile {
         }
     }
 
-    public void writeQueuesToMQSCClearFile(List<String> queues) {
+    public void writeQueuesToMQSCClearFile(List<String> queues, String projectName) {
 
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("ClearQueues.mqsc"));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(projectName + "ClearQueues.mqsc"));
 
             for (String queue : queues) {
                 writer.write(String.format("CLEAR QLOCAL('%s')\n", queue));
@@ -39,10 +39,10 @@ public class WriteToFile {
         }
     }
 
-    public void writeQueuesToMQSCDeleteFile(List<String> queues) {
+    public void writeQueuesToMQSCDeleteFile(List<String> queues, String projectName) {
 
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("DeleteQueues.mqsc"));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(projectName + "DeleteQueues.mqsc"));
 
             for (String queue : queues) {
                 writer.write(String.format("DELETE QLOCAL('%s')\n", queue));
