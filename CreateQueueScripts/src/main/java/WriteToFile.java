@@ -5,10 +5,10 @@ import java.util.List;
 
 public class WriteToFile {
 
-    public void writeQueuesToMQSCCreateFile(List<String> queues, String projectName) {
+    public void writeQueuesToMQSCCreateFile(List<String> queues, String targetDir, String projectName) {
 
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(projectName + ".mqsc"));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(targetDir + "\\" + projectName + ".mqsc"));
 
             for (String queue : queues) {
                 writer.write(String.format("DEFINE QLOCAL('%s') +\n", queue));
