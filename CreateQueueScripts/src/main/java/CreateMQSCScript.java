@@ -9,7 +9,9 @@ public class CreateMQSCScript {
         // Search folders for msgflows and subflows
         FlowFinder flowFinder = new FlowFinder();
 
-        List<String> flowsFound = flowFinder.findFlows("C:\\Users\\Jesper\\IBM\\IIBT10\\workspace\\tip023-ds-aps-gdm-java\\TIP023_APS_GDM");
+        String rootDir = "C:\\Users\\Jesper\\IBM\\IIBT10\\workspace\\tip023-ds-aps-gdm-java\\TIP023_APS_GDM";
+
+        List<String> flowsFound = flowFinder.findFlows(rootDir);
 
         // Search files for queues
         File file;
@@ -25,11 +27,22 @@ public class CreateMQSCScript {
         List<String> noDupesQueues;
         noDupesQueues = Utils.removeDuplicateElements(queuesFound);
 
+        // Find project name
+        String projectName;
+        projectName = Utils.findProjectName(rootDir);
+
         // Write mqsc files
         WriteToFile writeToFile = new WriteToFile();
 
-        writeToFile.writeQueuesToMQSCCreateFile(noDupesQueues);
-        writeToFile.writeQueuesToMQSCClearFile(noDupesQueues);
-        writeToFile.writeQueuesToMQSCDeleteFile(noDupesQueues);
+        /*
+        for (String queues : noDupesQueues) {
+            System.out.println(queues);
+        }
+        */
+
+        writeToFile.writeQueuesToMQSCCreateFile(noDupesQueues, projectName);
+
+        //writeToFile.writeQueuesToMQSCClearFile(noDupesQueues, projectName);
+        //writeToFile.writeQueuesToMQSCDeleteFile(noDupesQueues, projectName);
     }
 }
