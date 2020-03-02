@@ -13,8 +13,8 @@ public class WriteToFile {
             for (String queue : queues) {
                 writer.write(String.format("DEFINE QLOCAL('%s') +\n", queue));
                 writer.write("REPLACE + \n");
-                writer.write("MAXDEPTH(10000)\n");
-                writer.write("DESCRIPTION(\"\")\n");
+                writer.write("MAXDEPTH(10000) +\n");
+                writer.write("DESCR('')\n");
                 writer.write("\n");
             }
 
